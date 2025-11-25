@@ -81,16 +81,19 @@ public class ControllerNewAccount {
 			// information provided in the invitation
 			if (ViewNewAccount.theRole.compareTo("Admin") == 0) {
 				roleCode = 1;
-				user = new User(username, password, "", "", "", "", "", true, false, false, false);
+				user = new User(username, password, "", "", "", "", "", true, false, false, false, false);
 			} else if (ViewNewAccount.theRole.compareTo("Role1") == 0) {
 				roleCode = 2;
-				user = new User(username, password, "", "", "", "", "", false, true, false, false);
+				user = new User(username, password, "", "", "", "", "", false, true, false, false, false);
 			} else if (ViewNewAccount.theRole.compareTo("Role2") == 0) {
 				roleCode = 3;
-				user = new User(username, password, "", "", "", "", "", false, false, true, false);
+				user = new User(username, password, "", "", "", "", "", false, false, true, false, false);
 			} else if (ViewNewAccount.theRole.compareTo("Student") == 0) {
 				roleCode = 4;
-				user = new User(username, password, "", "", "", "", "", false, false, false, true);
+				user = new User(username, password, "", "", "", "", "", false, false, false, true, false);
+			} else if (ViewNewAccount.theRole.compareTo("Staff") == 0) {
+				roleCode = 5;
+				user = new User(username, password, "", "", "", "", "", false, false, false, false, true);
 			} else {
 				System.out.println(
 						"**** Trying to create a New Account for a role that does not exist!");

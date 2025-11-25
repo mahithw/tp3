@@ -471,6 +471,7 @@ public class Database {
 		if (user.getNewRole1()) numberOfRoles++;
 		if (user.getNewRole2()) numberOfRoles++;
 		if (user.getNewStudent()) numberOfRoles++;
+		if (user.getStaffRole()) numberOfRoles++;
 		return numberOfRoles;
 	}	
 
@@ -1048,7 +1049,7 @@ public class Database {
 
 	public boolean getUserAccountDetails(String username) {
 	    String query = "SELECT userName, password, firstName, middleName, lastName, preferredFirstName, "
-	                 + "emailAddress, adminRole, newRole1, newRole2, newStudent "
+	                 + "emailAddress, adminRole, newRole1, newRole2, newStudent, staffRole "
 	                 + "FROM userDB WHERE userName = ?";
 	    try (PreparedStatement pstmt = connection.prepareStatement(query)) {
 	        pstmt.setString(1, username);
@@ -1164,16 +1165,16 @@ public class Database {
 		    }
 		}
 
-		if (role.compareTo("Student") == 0) {
-			String query = "UPDATE userDB SET newStudent = ? WHERE username = ?";
+		if (role.compareTo("Staff") == 0) {
+			String query = "UPDATE userDB SET newStaff = ? WHERE username = ?";
 			try (PreparedStatement pstmt = connection.prepareStatement(query)) {
 				pstmt.setString(1, value);
 				pstmt.setString(2, username);
 				pstmt.executeUpdate();
 				if (value.compareTo("true") == 0)
-					currentNewStudent = true;
+					currentStaffRole = true;
 				else
-					currentNewStudent = false;
+					currentStaffRole = false;
 				return true;
 			} catch (SQLException e) {
 				return false;

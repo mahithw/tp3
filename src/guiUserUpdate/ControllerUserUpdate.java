@@ -56,6 +56,9 @@ protected static void goToUserHomePage(Stage theStage, User theUser) {
 	case 4:
 		new guiStudentHome.ViewStudentHome().displayStudentHome( theStage, theUser);
 		break;
+	case 5:  
+	    guiStaffHome.ViewStaffHome.displayStaffHome(theStage, theUser);
+	    break;
 	default:
 		System.out.println("*** ERROR *** UserUpdate goToUserHome has an invalid role: " +
 			theRole);
